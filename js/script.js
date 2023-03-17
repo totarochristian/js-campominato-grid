@@ -31,6 +31,4 @@ For example:
 ------------------------------------------------------------------------------
 */
 
-document.getElementById("square_1").addEventListener("click",function(){
-    console.log(this.innerText);
-})
+document.getElementById("choseMode").addEventListener("click",BtnPlayClicked);
