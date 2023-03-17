@@ -12,25 +12,27 @@
     <script src="./js/script.js" defer></script>
 </head>
 <body>
-    <header>
-        <nav>
-            <div id="logo" class="">
-                <img src="./assets/img/icon.avif" alt="Icon of the game">
-                <h1 class="fs-h1">Campo minato</h1>
+    <header class="bg-white">
+        <nav class="width-100-p height-100-p pd-x-2rem d-flex d-f-just-sp-between d-f-vert-align-center">
+            <div id="logo" class="height-100-p d-flex d-f-vert-align-center">
+                <img src="./assets/img/icon.avif" alt="Icon of the game" class="height-100-p">
+                <h1 class="fs-h1 txt-orange">Campo minato</h1>
             </div>
-            <div id="gameMode" class="">
-                <label for="difficulty">Modalità: </label>
-                <select name="difficulty" id="difficulty">
-                    <option value="1">Facile</option>
-                    <option value="2">Media</option>
-                    <option value="3">Difficile</option>
-                </select>
-                <button id="choseMode">Avvia</button>
+            <div id="gameMode" class="fs-p d-flex d-f-just-sp-between d-f-vert-align-center gap-1rem">
+                <div>
+                    <label for="difficulty">Modalità: </label>
+                    <select name="difficulty" id="difficulty">
+                        <option value="1">Facile</option>
+                        <option value="2">Media</option>
+                        <option value="3">Difficile</option>
+                    </select>
+                </div>
+                <button id="choseMode" class="btn-orange">Avvia</button>
             </div>
         </nav>
     </header>
-    <main>
-        <div id="gameContainer" class="">
+    <main class="bg-sand">
+        <div id="gameContainer" class="width-100-p height-100-p">
 
         </div>
     </main>
