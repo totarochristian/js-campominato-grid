@@ -10,6 +10,9 @@
     --header-height: 80px;
     --footer-height: 80px;
     --main-height: calc(100vh - var(--header-height) - var(--footer-height));
+
+    --numOfSquarePerRow: 1;
+    --squareSize: calc(100% / var(--numOfSquarePerRow));
 }
 
 /****************************************************************************/
@@ -35,8 +38,8 @@ main{
 }
 
 .square{
-    width: 50px;
-    height: 50px;
+    width: var(--squareSize);
+    height: var(--squareSize);
     background-image: url("../assets/img/square-bg.webp");
     background-size: cover;
     filter: brightness(70%);

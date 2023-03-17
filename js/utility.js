@@ -18,8 +18,9 @@ function GetNumberOfSquares(difficulty){
     return squareEasy;
 }
 
-function DrawField(square){
-    for(let i=1; i<=(square*square); i++){
+function DrawField(squares){
+    document.documentElement.style.setProperty('--numOfSquarePerRow', squares);
+    for(let i=1; i<=(squares*squares); i++){
         const sqr = document.createElement("div");
         sqr.id = "square_" + i;
         sqr.classList.add("square");
