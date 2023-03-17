@@ -33,3 +33,15 @@ footer{
 main{
     height: var(--main-height);
 }
+
+.square{
+    width: 50px;
+    height: 50px;
+    background-image: url("../assets/img/square-bg.webp");
+    background-size: cover;
+    filter: brightness(70%);
+    cursor: pointer;
+}
+.square:hover{
+    filter: brightness(100%);
+}
