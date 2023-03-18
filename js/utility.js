@@ -26,7 +26,6 @@ function GetNumberOfSquares(difficulty){
 }
 
 function DrawField(squares){
-    console.log(squares);
     document.documentElement.style.setProperty('--numOfSquarePerRow', squares);
     
     for(let i=1; i<=(squares*squares); i++){
