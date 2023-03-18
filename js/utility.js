@@ -5,6 +5,7 @@ const squareHard = 7;
 const bombs = [];
 let points;
 let gameOver;
+let backgroundMusic;
 
 function BtnPlayClicked(){
     points = 0;
@@ -13,6 +14,7 @@ function BtnPlayClicked(){
     const numSquare = GetNumberOfSquares(difficulty);
     DrawField(numSquare);
     ChoseBombPositions(numSquare);
+    DefineBackgroundMusic();
 }
 
 function GetNumberOfSquares(difficulty){
@@ -113,4 +115,11 @@ function GetRandomInt(max,min) {
 function GameOver(){
     gameOver = true;
     console.log("Game over! Points: "+points);
+    backgroundMusic.pause();
+}
+
+function DefineBackgroundMusic(){
+    backgroundMusic = new Audio("../assets/sound/music_background.mp3");
+    backgroundMusic.loop = true;
+    backgroundMusic.play();
 }
