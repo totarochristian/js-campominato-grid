@@ -48,3 +48,7 @@ main{
 .square:hover{
     filter: brightness(100%);
 }
+
+#gameContainer{
+    max-width: 650px;
+}
