@@ -28,22 +28,25 @@ function GetNumberOfSquares(difficulty){
 function DrawField(squares){
     document.documentElement.style.setProperty('--numOfSquarePerRow', squares);
     CleanChildsOfElementById("gameContainer");
-    for(let i=1; i<=(squares*squares); i++){
-        const sqr = document.createElement("div");
-        sqr.id = "square_" + i;
-        sqr.classList.add("square");
-        sqr.classList.add("d-flex");
-        sqr.classList.add("d-f-just-center");
-        sqr.classList.add("d-f-vert-align-center");
-        sqr.classList.add("fw-bold");
-        sqr.classList.add("fs-p");
-        sqr.classList.add("trans-all-0_2s-linear");
-        sqr.innerText = i;
-        sqr.addEventListener("click",function(){
-            console.log(this.innerText);
-        })
-        document.getElementById("gameContainer").appendChild(sqr);
-    }
+    for(let i=1; i<=(squares*squares); i++)
+        DrawSquare(i);
+}
+
+function DrawSquare(index){
+    const sqr = document.createElement("div");
+    sqr.id = "square_" + index;
+    sqr.classList.add("square");
+    sqr.classList.add("d-flex");
+    sqr.classList.add("d-f-just-center");
+    sqr.classList.add("d-f-vert-align-center");
+    sqr.classList.add("fw-bold");
+    sqr.classList.add("fs-p");
+    sqr.classList.add("trans-all-0_2s-linear");
+    sqr.innerText = index;
+    sqr.addEventListener("click",function(){
+        console.log(this.innerText);
+    })
+    document.getElementById("gameContainer").appendChild(sqr);
 }
 
 function CleanChildsOfElementById(id){
