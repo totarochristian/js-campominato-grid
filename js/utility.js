@@ -44,7 +44,11 @@ function DrawSquare(index){
     sqr.classList.add("trans-all-0_2s-linear");
     sqr.innerText = index;
     sqr.addEventListener("click",function(){
-        console.log(this.innerText);
+        const index = parseInt(this.innerText);
+        if(IsBomb(index))
+            UserClickedBomb(this);
+        else
+            UserClickedGrass(this);
     })
     document.getElementById("gameContainer").appendChild(sqr);
 }
@@ -52,4 +56,23 @@ function DrawSquare(index){
 function CleanChildsOfElementById(id){
     const gc = document.getElementById(id);
     gc.innerHTML = '';
+}
+
+function IsBomb(index){
+    return true;
+}
+
+function PlaySound(name){
+    let sound = new Audio(name);
+	sound.play();
+}
+
+function UserClickedBomb(obj){
+    obj.innerHTML = '<img class="height-100-p" src="../assets/img/bomb2.png"></img>';
+    PlaySound("../assets/sound/bomb.mp3");
+}
+
+function UserClickedGrass(obj){
+    obj.innerHTML = '<img class="height-100-p" src="../assets/img/grass2.png"></img>';
+    PlaySound("../assets/sound/grass.wav");
 }
