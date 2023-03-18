@@ -2,11 +2,13 @@ const numberOfBomb = 16;
 const squareEasy = 10;
 const squareMedium = 9;
 const squareHard = 7;
+const bombs = [];
 
 function BtnPlayClicked(){
     const difficulty = parseInt(document.getElementById("difficulty").value);
     const numSquare = GetNumberOfSquares(difficulty);
     DrawField(numSquare);
+    ChoseBombPositions(numSquare);
 }
 
 function GetNumberOfSquares(difficulty){
@@ -59,7 +61,7 @@ function CleanChildsOfElementById(id){
 }
 
 function IsBomb(index){
-    return true;
+    return bombs.indexOf(index) >= 0 ? true : false;
 }
 
 function PlaySound(name){
@@ -75,4 +77,27 @@ function UserClickedBomb(obj){
 function UserClickedGrass(obj){
     obj.innerHTML = '<img class="height-100-p" src="../assets/img/grass2.png"></img>';
     PlaySound("../assets/sound/grass.wav");
+}
+
+function ChoseBombPositions(numSquare){
+    bombs.length = 0;
+    for(let i=0; i<numberOfBomb; i++){
+        let pos = GetRandomInt(numSquare*numSquare,1);
+        if(bombs.indexOf(pos)<0)
+            bombs.push(pos);
+        else
+            i--;
+    }
+}
+
+/**
+ * Function that will generate a random int
+ * @param {bigint} max Max value of the interval
+ * @param {bigint} min Min value of the interval
+ * @returns {bigint} Generated random int value
+ */
+function GetRandomInt(max,min) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min);
 }
