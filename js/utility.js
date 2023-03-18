@@ -52,16 +52,9 @@ function DrawSquare(index){
     sqr.classList.add("fw-bold");
     sqr.classList.add("fs-p");
     sqr.classList.add("trans-all-0_2s-linear");
+    sqr.classList.add("pd-0_5rem");
     sqr.innerText = index;
-    sqr.addEventListener("click",function(){
-        if(!gameOver){
-            const index = parseInt(this.innerText);
-            if(IsBomb(index))
-                UserClickedBomb(this);
-            else
-                UserClickedGrass(this);
-        }
-    })
+    sqr.addEventListener("click",UserClickSquare,true);
     document.getElementById("gameContainer").appendChild(sqr);
 }
 
@@ -79,6 +72,16 @@ function PlaySound(name){
 	sound.play();
 }
 
+function UserClickSquare(){
+    if(!gameOver){
+        const index = parseInt(this.innerText);
+        if(IsBomb(index))
+            UserClickedBomb(this);
+        else
+            UserClickedGrass(this);
+    }
+}
+
 function UserClickedBomb(obj){
     const imgName = bombsImages[GetRandomInt(bombsImages.length-1,0)];
     obj.innerHTML = '<img class="height-100-p" src="../assets/img/'+imgName+'"></img>';
@@ -91,6 +94,7 @@ function UserClickedGrass(obj){
     obj.innerHTML = '<img class="height-100-p" src="../assets/img/'+imgName+'"></img>';
     PlaySound("../assets/sound/grass.wav");
     points+=10;
+    obj.removeEventListener("click", UserClickSquare, true);
 }
 
 function ChoseBombPositions(numSquare){
