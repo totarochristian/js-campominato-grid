@@ -27,7 +27,7 @@ function GetNumberOfSquares(difficulty){
 
 function DrawField(squares){
     document.documentElement.style.setProperty('--numOfSquarePerRow', squares);
-    
+    CleanChildsOfElementById("gameContainer");
     for(let i=1; i<=(squares*squares); i++){
         const sqr = document.createElement("div");
         sqr.id = "square_" + i;
@@ -44,4 +44,9 @@ function DrawField(squares){
         })
         document.getElementById("gameContainer").appendChild(sqr);
     }
+}
+
+function CleanChildsOfElementById(id){
+    const gc = document.getElementById(id);
+    gc.innerHTML = '';
 }
