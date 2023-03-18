@@ -3,8 +3,12 @@ const squareEasy = 10;
 const squareMedium = 9;
 const squareHard = 7;
 const bombs = [];
+let points;
+let gameOver;
 
 function BtnPlayClicked(){
+    points = 0;
+    gameOver = false;
     const difficulty = parseInt(document.getElementById("difficulty").value);
     const numSquare = GetNumberOfSquares(difficulty);
     DrawField(numSquare);
@@ -46,11 +50,13 @@ function DrawSquare(index){
     sqr.classList.add("trans-all-0_2s-linear");
     sqr.innerText = index;
     sqr.addEventListener("click",function(){
-        const index = parseInt(this.innerText);
-        if(IsBomb(index))
-            UserClickedBomb(this);
-        else
-            UserClickedGrass(this);
+        if(!gameOver){
+            const index = parseInt(this.innerText);
+            if(IsBomb(index))
+                UserClickedBomb(this);
+            else
+                UserClickedGrass(this);
+        }
     })
     document.getElementById("gameContainer").appendChild(sqr);
 }
@@ -72,11 +78,13 @@ function PlaySound(name){
 function UserClickedBomb(obj){
     obj.innerHTML = '<img class="height-100-p" src="../assets/img/bomb2.png"></img>';
     PlaySound("../assets/sound/bomb.mp3");
+    GameOver();
 }
 
 function UserClickedGrass(obj){
     obj.innerHTML = '<img class="height-100-p" src="../assets/img/grass2.png"></img>';
     PlaySound("../assets/sound/grass.wav");
+    points+=10;
 }
 
 function ChoseBombPositions(numSquare){
@@ -100,4 +108,9 @@ function GetRandomInt(max,min) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+function GameOver(){
+    gameOver = true;
+    console.log("Game over! Points: "+points);
 }
