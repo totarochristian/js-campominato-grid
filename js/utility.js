@@ -4,22 +4,31 @@ const squareMedium = 9;
 const squareHard = 7;
 
 function BtnPlayClicked(){
-    const difficulty = document.getElementById("difficulty").value;
+    const difficulty = parseInt(document.getElementById("difficulty").value);
     const numSquare = GetNumberOfSquares(difficulty);
     DrawField(numSquare);
 }
 
 function GetNumberOfSquares(difficulty){
+    let res = 0;
     switch(difficulty){
-        case 1: return squareEasy;
-        case 2: return squareMedium;
-        case 3: return squareHard;
+        case 1: 
+            res = squareEasy;
+            break;
+        case 2:
+            res = squareMedium;
+            break;
+        case 3:
+            res = squareHard;
+            break;
     }
-    return squareEasy;
+    return res;
 }
 
 function DrawField(squares){
+    console.log(squares);
     document.documentElement.style.setProperty('--numOfSquarePerRow', squares);
+    
     for(let i=1; i<=(squares*squares); i++){
         const sqr = document.createElement("div");
         sqr.id = "square_" + i;
