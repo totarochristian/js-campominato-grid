@@ -3,6 +3,8 @@ const squareEasy = 10;
 const squareMedium = 9;
 const squareHard = 7;
 const bombs = [];
+const bombsImages = ["bomb1.png","bomb2.png","bomb3.png","bomb4.png"];
+const grassImages = ["grass.png","grass2.png"];
 let points;
 let gameOver;
 let backgroundMusic;
@@ -78,13 +80,15 @@ function PlaySound(name){
 }
 
 function UserClickedBomb(obj){
-    obj.innerHTML = '<img class="height-100-p" src="../assets/img/bomb2.png"></img>';
+    const imgName = bombsImages[GetRandomInt(bombsImages.length-1,0)];
+    obj.innerHTML = '<img class="height-100-p" src="../assets/img/'+imgName+'"></img>';
     PlaySound("../assets/sound/bomb.mp3");
     GameOver();
 }
 
 function UserClickedGrass(obj){
-    obj.innerHTML = '<img class="height-100-p" src="../assets/img/grass2.png"></img>';
+    const imgName = grassImages[GetRandomInt(grassImages.length-1,0)];
+    obj.innerHTML = '<img class="height-100-p" src="../assets/img/'+imgName+'"></img>';
     PlaySound("../assets/sound/grass.wav");
     points+=10;
 }
